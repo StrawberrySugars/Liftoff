@@ -12,9 +12,7 @@
 </svelte:head>
 <div class="flex flex-row p-5">
 	{#snippet navItem(name: string, href: string)}
-		<a class="mx-1 rounded-lg border border-black/20 p-2 hover:bg-black/20" href={resolve(href)}
-			>{name}</a
-		>
+		<a class="mx-1 rounded-lg border border-black/20 p-2 hover:bg-black/20" {href}>{name}</a>
 	{/snippet}
 	{@render navItem('Foods', '/')}
 	{@render navItem('Beverages', '/beverages')}
