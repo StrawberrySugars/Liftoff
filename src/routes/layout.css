@@ -71,7 +71,7 @@ h1 {
     margin: auto;
     margin-bottom: 4px;
     margin-left: 2%;
-    margin-right: 2%;
+    margin-right: 0%;
     padding: 2px;
     background-color: rgb(211, 240, 223);
     border-radius: 8px;
@@ -82,7 +82,7 @@ h1 {
     display: flex;
     justify-content: space-between;
     /*align-items: center; */
-    width: 96%;    
+    width: 94.6%;    
 }
 
 .create {
@@ -133,4 +133,5 @@ ul {
 
 h2 {
     margin-left: 1%;
+    margin-bottom: 10px;
 }
