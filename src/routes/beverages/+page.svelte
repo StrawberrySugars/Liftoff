@@ -16,8 +16,7 @@
 				{beverage.name}
 			</div>
 			<div class="item item2">{beverage.calories} calories/8oz</div>
-            <div class="item item3">{beverage.amount}g remaining</div>
-			<div class="item item4">edit</div>
+			<div class="item item3">{beverage.amount}g remaining</div>
 		</div>
 	{/each}
 </div>
