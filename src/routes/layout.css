@@ -1,1 +1,67 @@
 @import 'tailwindcss';
+
+
+.navBar {
+    position: sticky;
+    top: 0;
+    width: 100%;
+    background-color: white;
+    border-bottom-width: 4px;
+    border-bottom-style: solid;
+    border-bottom-color: rgb(118, 58, 150);
+}
+.navBar ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+.navBar li {
+    float: left;
+    padding: 1%;
+}
+.navBar a {
+    display: block;
+    font-family: verdana;
+    padding: 14px 6px;
+    height: 2%;
+    background-color: white;
+    color: rgb(65, 35, 81);
+    border: none;
+}
+.navBar a:active {
+    background-color: rgb(200, 200, 200);
+}
+
+#box {
+    border-style: solid;
+    border-radius: 3px;
+    border-color:rgb(235, 81, 255);
+}
+
+h1 {
+    font-family: 'trebuchet MS';
+    font-size: 180%;
+    color: rgb(65, 35, 81);
+}
+
+.recMeal {
+    width: 95%;
+    margin: auto;
+    margin-bottom: 4px;
+    padding: 2px;
+    background-color: rgb(227, 220, 249);
+    border-radius: 8px;
+    text-align: center;
+}
+
+h4 {
+    font-family: 'trebuchet MS';
+    font-size: 100%;
+    color: rgb(65, 35, 81);
+}
+
+ul {
+    list-style-type: circle;
+    list-style-position: inside;
+}
