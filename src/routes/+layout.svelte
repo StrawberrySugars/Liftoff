@@ -6,10 +6,12 @@
 </script>
 
 <svelte:head><link rel="icon" href={favicon} /></svelte:head>
-<div class="navBar">
-	<ul>
-		<li><a id="box" href="\">Foods</a></li>
-		<li><a id="box" href="\beverages">Beverages</a></li>
-	</ul>
+<div class="flex flex-row p-5">
+	{#snippet navItem(name: string, href: string)}
+		<a class="border border-black/20 p-2 hover:bg-black/20" {href}>{name}</a>
+	{/snippet}
+	{@render navItem('Home', '/')}
+	{@render navItem('Beverages', '/beverages')}
+	{@render navItem('Foods', '/foods')}
 </div>
 {@render children()}
