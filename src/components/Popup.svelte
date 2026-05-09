@@ -11,11 +11,21 @@
 	} = $props();
 </script>
 
-<div onclick={onDismiss} />
-
 <div
 	class="fixed top-0 left-0 flex h-full w-full items-center justify-center bg-black/50"
-	onclick={onDismiss}
+	onclick={(event) => {
+		if (event.target === event.currentTarget) {
+			onDismiss();
+		}
+	}}
+	onkeydown={(event) => {
+		if (event.key === 'Enter' || event.key === ' ') {
+			onDismiss();
+		}
+	}}
+	role="button"
+	tabindex="0"
+	aria-label="Close popup"
 >
 	<div class="rounded bg-white p-6">
 		<div>

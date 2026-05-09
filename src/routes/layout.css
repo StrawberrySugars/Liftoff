@@ -1,137 +1,131 @@
 @import 'tailwindcss';
 
-
 .navBar {
-    position: sticky;
-    top: 0;
-    width: 100%;
-    background-color: white;
-    border-bottom-width: 4px;
-    border-bottom-style: solid;
-    border-bottom-color: rgb(118, 58, 150);
+	position: sticky;
+	top: 0;
+	width: 100%;
+	background-color: white;
+	border-bottom-width: 4px;
+	border-bottom-style: solid;
+	border-bottom-color: rgb(118, 58, 150);
 }
 .navBar ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	overflow: hidden;
 }
 .navBar li {
-    float: left;
-    padding: 1%;
+	float: left;
+	padding: 1%;
 }
 .navBar a {
-    display: block;
-    font-family: verdana;
-    padding: 14px 6px;
-    height: 2%;
-    background-color: white;
-    color: rgb(65, 35, 81);
-    border: none;
+	display: block;
+	font-family: verdana;
+	padding: 14px 6px;
+	height: 2%;
+	background-color: white;
+	color: rgb(65, 35, 81);
+	border: none;
 }
 .navBar a:active {
-    background-color: rgb(200, 200, 200);
+	background-color: rgb(200, 200, 200);
 }
 
 #box {
-    border-style: solid;
-    border-radius: 3px;
-    border-color:rgb(235, 81, 255);
+	border-style: solid;
+	border-radius: 3px;
+	border-color: rgb(235, 81, 255);
 }
 
 h1 {
-    font-family: 'trebuchet MS';
-    font-size: 180%;
-    color: rgb(65, 35, 81);
+	font-family: 'trebuchet MS';
+	font-size: 180%;
+	color: rgb(65, 35, 81);
 }
 
 .recMeal {
-    width: 95%;
-    margin: auto;
-    margin-bottom: 4px;
-    padding: 2px;
-    background-color: rgb(227, 220, 249);
-    border-radius: 8px;
-    padding-left: 10px;
-    padding-bottom: 5px;
+	width: 95%;
+	margin: auto;
+	margin-bottom: 4px;
+	padding: 2px;
+	background-color: rgb(227, 220, 249);
+	border-radius: 8px;
+	padding-left: 10px;
+	padding-bottom: 5px;
 }
 
 .recGrow {
-    width: 95%;
-    margin: auto;
-    margin-bottom: 4px;
-    padding: 2px;
-    background-color: rgb(211, 240, 223);
-    border-radius: 8px;
-    padding-left: 10px;
-    padding-bottom: 5px;
+	width: 95%;
+	margin: auto;
+	margin-bottom: 4px;
+	padding: 2px;
+	background-color: rgb(211, 240, 223);
+	border-radius: 8px;
+	padding-left: 10px;
+	padding-bottom: 5px;
 }
 
 .list {
-    margin: auto;
-    margin-bottom: 4px;
-    margin-left: 2%;
-    margin-right: 0%;
-    padding: 2px;
-    background-color: rgb(211, 240, 223);
-    border-radius: 8px;
-    padding-left: 10px;
-    padding-bottom: 5px;
-    padding-right: 10px;
+	margin: auto;
+	margin-bottom: 4px;
+	margin-left: 2%;
+	margin-right: 2%;
+	padding: 2px;
+	background-color: rgb(211, 240, 223);
+	border-radius: 8px;
+	padding-left: 10px;
+	padding-bottom: 5px;
+	padding-right: 10px;
 
-    display: flex;
-    justify-content: space-between;
-    /*align-items: center; */
-    width: 94.6%;    
+	display: flex;
+	justify-content: space-between;
+	/*align-items: center; */
+	width: 96%;
 }
 
 .create {
-    width: 95%;
-    margin: auto;
-    margin-bottom: 4px;
-    padding: 2px;
-    background-color: rgb(211, 239, 240);
-    border-radius: 8px;
-    padding-left: 10px;
-    padding-bottom: 5px;
-    padding-right: 10px;
+	width: 95%;
+	margin: auto;
+	margin-bottom: 4px;
+	padding: 2px;
+	background-color: rgb(211, 239, 240);
+	border-radius: 8px;
+	padding-left: 10px;
+	padding-bottom: 5px;
+	padding-right: 10px;
 }
 
 .item {
-    flex-shrink: 0;
+	flex-shrink: 0;
 }
 
 .item1 {
-    width: 30%;
+	width: 30%;
 }
 
 .item2 {
-    width: 35%;
-    /*margin-left: auto;
+	width: 35%;
+	/*margin-left: auto;
     margin-right: calc(45% - 100% / 4); */
 }
 
 .item3 {
-    width: 30%;
+	width: 30%;
 }
 
 .item4 {
-    width: 10%;
-    color: rgb(0, 144, 152);
+	width: 10%;
+	color: rgb(0, 144, 152);
 }
 
 h4 {
-    font-family: 'trebuchet MS';
-    font-size: 100%;
-    color: rgb(65, 35, 81);
+	font-family: 'trebuchet MS';
+	font-size: 100%;
+	color: rgb(65, 35, 81);
 }
 
 ul {
-    list-style-type: circle;
-    list-style-position: inside;
-}
-
-h2 {
-    margin-left: 1%;
-    margin-bottom: 10px;
+	list-style-type: circle;
+	list-style-position: inside;
 }
