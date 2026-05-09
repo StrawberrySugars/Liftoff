@@ -1,5 +1,7 @@
 <script lang="ts">
 	import { beverages } from '$lib/stores';
+	import Popup from '../../components/Popup.svelte';
+	let shown = $state(false);
 </script>
 
 <div class="navBar">
