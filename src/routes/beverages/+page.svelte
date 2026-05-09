@@ -4,6 +4,13 @@
 	let shown = $state(false);
 </script>
 
-{#each $beverages as beverage (beverage.id)}
-	<div>{beverage.name} - {beverage.description}</div>
-{/each}
+<h4>List of Beverages</h4>
+<div>
+	{#each $beverages as beverage (beverage.id)}
+		<div class="beverages">
+			<ul class="beverageList">
+				<li>{beverage.name} - {beverage.description}</li>
+			</ul>
+		</div>
+	{/each}
+</div>
