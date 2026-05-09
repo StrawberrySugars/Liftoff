@@ -68,14 +68,33 @@ h1 {
 }
 
 .beverages {
-    width: 95%;
     margin: auto;
     margin-bottom: 4px;
+    margin-left: 2%;
+    margin-right: 2%;
     padding: 2px;
     background-color: rgb(211, 240, 223);
     border-radius: 8px;
     padding-left: 10px;
     padding-bottom: 5px;
+    padding-right: 10px;
+
+    display: flex;
+    justify-content: space-between;
+    /*align-items: center; */
+    width: 96%;    
+}
+
+.createBeverage {
+    width: 95%;
+    margin: auto;
+    margin-bottom: 4px;
+    padding: 2px;
+    background-color: rgb(211, 239, 240);
+    border-radius: 8px;
+    padding-left: 10px;
+    padding-bottom: 5px;
+    padding-right: 10px;
 }
 
 h4 {
@@ -89,7 +108,11 @@ ul {
     list-style-position: inside;
 }
 
-.beverageList ul {
-    list-style-type: circle;
-    list-style-position: inside;
+.item-middle {
+  margin-left: auto;
+  margin-right: calc(45% - 100% / 3); /*fixes position at 55% of the way*/
+}
+
+h2 {
+    margin-left: 1%;
 }

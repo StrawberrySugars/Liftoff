@@ -19,13 +19,22 @@
 	</ul>
 </div>
 
-<h4>List of Beverages</h4>
+<h2>List of Beverages</h2>
+<div class="createBeverage">
+    + add a beverage
+</div>
 <div>
     {#each $beverages as beverage (beverage.id)}
         <div class="beverages">
-        <ul class="beverageList">
-            <li>{beverage.name} - {beverage.description}</li>
-        </ul>
+            <div>
+                {beverage.name} - {beverage.description} 
+            </div>
+            <div class="item-middle">
+                beverage nutrients
+            </div>
+            <div>
+                delete
+            </div>
         </div>
     {/each}
 </div>
