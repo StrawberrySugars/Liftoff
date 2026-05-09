@@ -9,7 +9,6 @@
 
 <svelte:head>
 	<link rel="icon" href={favicon} />
-	<base href="%sveltekit.assets%/">
 </svelte:head>
 <div class="flex flex-row p-5">
 	{#snippet navItem(name: string, href: string)}
