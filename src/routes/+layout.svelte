@@ -7,6 +7,7 @@
 	let { children }: { children: Snippet } = $props();
 </script>
 
+<svelte:head><link rel="icon" href={favicon} /></svelte:head>
 <div class="flex flex-row p-5">
 	{#snippet navItem(name: string, href: string)}
 	{/snippet}
