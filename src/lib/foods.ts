@@ -76,7 +76,7 @@ function createFoodStore() {
         decreaseFoodAmount: (index: number) =>
             update((items) => {
                 const updated = items.map((food, itemIndex) =>
-                    itemIndex === index && food.amount > 1
+                    itemIndex === index && food.amount > 0
                         ? { ...food, amount: food.amount - 1 }
                         : food
                 );

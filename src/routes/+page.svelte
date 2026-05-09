@@ -104,7 +104,7 @@
 				</div>
 				<div class="ml-auto flex items-center gap-3">
 					<button
-						disabled={food.amount <= 1}
+						disabled={food.amount <= 0}
 						class="rounded p-1 hover:bg-gray-300 disabled:cursor-not-allowed disabled:opacity-40 disabled:hover:bg-transparent"
 						onclick={() => foods.decreaseFoodAmount(index)}
 					>
