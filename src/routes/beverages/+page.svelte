@@ -16,7 +16,7 @@
 				{beverage.name} - {beverage.description}
 			</div>
 			<div class="item-middle">beverage nutrients</div>
-			<div>delete</div>
+			<div class="editBeverage">edit</div>
 		</div>
 	{/each}
 </div>
