@@ -3,15 +3,14 @@ import { writable } from 'svelte/store';
 export interface Beverage {
     id: number;
     name: string;
-    description: string;
 }
 
 const initialBeverages: Beverage[] = [
-    { id: 1, name: 'Water', description: 'Pure drinking water' },
-    { id: 2, name: 'Orange Juice', description: 'Fresh squeezed orange juice' },
-    { id: 3, name: 'Coffee', description: 'Freshly brewed coffee' },
-    { id: 4, name: 'Tea', description: 'Hot brewed tea' },
-    { id: 5, name: 'Smoothie', description: 'Fruit smoothie' }
+    { id: 1, name: 'Water' },
+    { id: 2, name: 'Orange Juice' },
+    { id: 3, name: 'Coffee' },
+    { id: 4, name: 'Tea' },
+    { id: 5, name: 'Smoothie' }
 ];
 
 function createBeverageStore() {

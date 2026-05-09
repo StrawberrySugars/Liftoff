@@ -13,7 +13,7 @@
 	{#each $beverages as beverage (beverage.id)}
 		<div class="beverages">
 			<div>
-				{beverage.name} - {beverage.description}
+				{beverage.name}
 			</div>
 			<div class="item-middle">beverage nutrients</div>
 			<div>delete</div>
