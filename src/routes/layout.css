@@ -52,7 +52,19 @@ h1 {
     padding: 2px;
     background-color: rgb(227, 220, 249);
     border-radius: 8px;
-    text-align: center;
+    padding-left: 10px;
+    padding-bottom: 5px;
+}
+
+.recGrow {
+    width: 95%;
+    margin: auto;
+    margin-bottom: 4px;
+    padding: 2px;
+    background-color: rgb(211, 240, 223);
+    border-radius: 8px;
+    padding-left: 10px;
+    padding-bottom: 5px;
 }
 
 h4 {
