@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { beverages } from '$lib/stores';
+	import { beverages } from '$lib/beverages';
 	import Popup from '../../components/Popup.svelte';
 	let shown = $state(false);
 </script>

@@ -1,16 +1,10 @@
 <script lang="ts">
+	import RecommendedMeals from '../components/RecommendedMeals.svelte';
+
 	// instance-level logic goes here
 </script>
 
-<h2>Recommended Meal</h2>
-
-<div class="recMeal">
-	<h4>It is recommended for you to have:</h4>
-	<ul>
-		<li>ingredient 1</li>
-		<li>ingredient 2</li>
-	</ul>
-</div>
+<RecommendedMeals />
 
 <h2>Recommended Foods to Grow</h2>
 
