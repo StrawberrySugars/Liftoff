@@ -6,4 +6,10 @@
 </script>
 
 <svelte:head><link rel="icon" href={favicon} /></svelte:head>
+<div class="navBar">
+	<ul>
+		<li><a id="box" href="\">Foods</a></li>
+		<li><a id="box" href="\beverages">Beverages</a></li>
+	</ul>
+</div>
 {@render children()}
