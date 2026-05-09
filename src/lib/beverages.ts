@@ -3,14 +3,16 @@ import { writable } from 'svelte/store';
 export interface Beverage {
     id: number;
     name: string;
+    calories: number;
+    amount: number;
 }
 
 const initialBeverages: Beverage[] = [
-    { id: 1, name: 'Water' },
-    { id: 2, name: 'Orange Juice' },
-    { id: 3, name: 'Coffee' },
-    { id: 4, name: 'Tea' },
-    { id: 5, name: 'Smoothie' }
+    { id: 1, name: 'Water', calories: 0, amount: 800000 },
+    { id: 2, name: 'Orange Juice', calories: 102, amount: 1000 },
+    { id: 3, name: 'Coffee', calories: 2, amount: 3000 },
+    { id: 4, name: 'Tea', calories: 2, amount: 2000 },
+    { id: 5, name: 'Smoothie', calories: 84, amount: 1000 }
 ];
 
 function createBeverageStore() {
