@@ -1,14 +1,13 @@
 <script lang="ts">
+	import type { Meal } from '$lib';
 	import { ingredients } from '$lib/ingredientStore';
 	import { suggestMeals } from '$lib/meals';
-
-	const ingredientsList = $ingredients;
-	const meals = suggestMeals(ingredientsList);
+	let meals = $state<Meal[]>([]);
 </script>
 
-<h2>Recommended Meals</h2>
+<h2>Recommended ingredients to plant</h2>
 <div class="recMeal">
-	<h4>It is recommended for you to have:</h4>
+	<h4>It is recommended for you to plant:</h4>
 	<ul>
 		{#each meals as meal (meal.id)}
 			<li>{meal.name}</li>
