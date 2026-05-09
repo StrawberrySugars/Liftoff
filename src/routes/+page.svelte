@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { foods } from '$lib/foods';
 	import { ingredients } from '$lib/ingredientStore';
-	import { PlusIcon } from '@lucide/svelte';
+	import { MinusIcon, PlusIcon } from '@lucide/svelte';
 	import Popup from '../components/Popup.svelte';
 
 	let shown = $state(false);
@@ -20,7 +20,8 @@
 		foods.addFood({
 			name: mealName.trim(),
 			nutrients: selectedIngredientNames,
-			requiredPlants: selectedIngredientNames
+			requiredPlants: selectedIngredientNames,
+			amount: 1
 		});
 
 		mealName = '';
@@ -69,7 +70,13 @@
 				placeholder="Meal name"
 				class="rounded border border-gray-300 p-2"
 			/>
-			<button onclick={addMeal} class="rounded bg-blue-500 px-4 py-2 text-white">Add Meal</button>
+			<button
+				onclick={addMeal}
+				disabled={!mealName.trim() || selectedIngredients.length === 0}
+				class="rounded bg-blue-500 px-4 py-2 text-white disabled:cursor-not-allowed disabled:bg-blue-300"
+			>
+				Add Meal
+			</button>
 		</div>
 	</Popup>
 {/if}
@@ -87,16 +94,33 @@
 		<PlusIcon /> add a meal
 	</button>
 	<div class="mt-5">
-		{#each $foods as food (food.name)}
+		{#each $foods as food, index (food.name)}
 			<div class="mb-2 flex rounded-lg border border-gray-300 p-3">
-				<div class="item item1">
-					{food.name}
+				<div>
+					<div>
+						{food.name}
+					</div>
+					<div>{food.requiredPlants.join(', ')}</div>
 				</div>
-				<div class="item item2">{food.requiredPlants.join(', ')}</div>
-				<div class="item item4">edit</div>
+				<div class="ml-auto flex items-center gap-3">
+					<button
+						disabled={food.amount <= 1}
+						class="rounded p-1 hover:bg-gray-300 disabled:cursor-not-allowed disabled:opacity-40 disabled:hover:bg-transparent"
+						onclick={() => foods.decreaseFoodAmount(index)}
+					>
+						<MinusIcon />
+					</button>
+					<div>{food.amount}</div>
+					<button
+						class="rounded p-1 hover:bg-gray-300"
+						onclick={() => foods.increaseFoodAmount(index)}
+					>
+						<PlusIcon />
+					</button>
+				</div>
 			</div>
 		{/each}
 	</div>
 </div>
 
-<br>
+<br />

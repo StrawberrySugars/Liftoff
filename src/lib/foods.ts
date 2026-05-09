@@ -4,39 +4,52 @@ export interface Food {
     name: string;
     nutrients: string[];
     requiredPlants: string[];
+    amount: number;
 }
 
 const initialFoods: Food[] = [
     {
         "name": "Fresh Garden Salad",
         "requiredPlants": ["Lettuce", "Tomato", "Carrots", "Basil", "Dill"],
-        "nutrients": ["Vitamin A", "Vitamin K", "Fiber"]
+        "nutrients": ["Vitamin A", "Vitamin K", "Fiber"],
+        "amount": 1
     },
     {
         "name": "Sweet Potato and Chickpea Stew",
         "requiredPlants": ["Sweet potato", "Chickpeas", "Dill"],
-        "nutrients": ["Carbohydrates", "Protein", "Vitamin A"]
+        "nutrients": ["Carbohydrates", "Protein", "Vitamin A"],
+        "amount": 1
     },
     {
         "name": "Soybean and Tomato Stir-fry",
         "requiredPlants": ["Soybeans", "Tomato", "Basil"],
-        "nutrients": ["Protein", "Healthy Fats", "Vitamin C"]
+        "nutrients": ["Protein", "Healthy Fats", "Vitamin C"],
+        "amount": 1
     },
     {
         "name": "Space Flatbread with Herb Garnish",
         "requiredPlants": ["Wheat (Ground into flour)", "Basil", "Dill"],
-        "nutrients": ["Carbohydrates", "Protein"]
+        "nutrients": ["Carbohydrates", "Protein"],
+        "amount": 1
     },
     {
         "name": "Chickpea Lettuce Wraps",
         "requiredPlants": ["Lettuce", "Chickpeas", "Carrots"],
-        "nutrients": ["Protein", "Fiber", "Vitamin K"]
+        "nutrients": ["Protein", "Fiber", "Vitamin K"],
+        "amount": 1
     }
 ];
 
+function normalizeFoods(items: Food[]) {
+    return items.map((food) => ({
+        ...food,
+        amount: food.amount ?? 1
+    }));
+}
+
 function createFoodStore() {
     const storedData = typeof window !== 'undefined' ? localStorage.getItem('foods') : null;
-    const initialData = storedData ? JSON.parse(storedData) : initialFoods;
+    const initialData = storedData ? normalizeFoods(JSON.parse(storedData)) : initialFoods;
 
     const { subscribe, set, update } = writable<Food[]>(initialData);
 
@@ -46,8 +59,27 @@ function createFoodStore() {
             update((items) => {
                 const newFood = {
                     ...food,
+                    amount: food.amount ?? 1
                 };
                 const updated = [...items, newFood];
+                localStorage.setItem('foods', JSON.stringify(updated));
+                return updated;
+            }),
+        increaseFoodAmount: (index: number) =>
+            update((items) => {
+                const updated = items.map((food, itemIndex) =>
+                    itemIndex === index ? { ...food, amount: food.amount + 1 } : food
+                );
+                localStorage.setItem('foods', JSON.stringify(updated));
+                return updated;
+            }),
+        decreaseFoodAmount: (index: number) =>
+            update((items) => {
+                const updated = items.map((food, itemIndex) =>
+                    itemIndex === index && food.amount > 1
+                        ? { ...food, amount: food.amount - 1 }
+                        : food
+                );
                 localStorage.setItem('foods', JSON.stringify(updated));
                 return updated;
             }),
