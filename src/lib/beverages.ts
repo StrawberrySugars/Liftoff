@@ -14,7 +14,7 @@ const initialBeverages: Beverage[] = [
         "requiredPlants": [],
         "amount": 1,
         "img": "https://images.pexels.com/photos/416528/pexels-photo-416528.jpeg",
-        "ingStr": " "
+        "ingStr": ""
     },
     {
         "name": "Coffee",
