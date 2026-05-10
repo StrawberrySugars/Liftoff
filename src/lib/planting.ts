@@ -17,7 +17,9 @@ export const plants: PlantOption[] = [
     { id: "tomato", name: 'Tomato', waterRequirementMm: 500, timeToHarvestDays: 70 },
     { id: "wheat", name: 'Wheat', waterRequirementMm: 550, timeToHarvestDays: 229 },
     { id: "dill", name: 'Dill', waterRequirementMm: 200, timeToHarvestDays: 90 },
-    { id: "basil", name: 'Basil', waterRequirementMm: 220, timeToHarvestDays: 75 }
+    { id: "basil", name: 'Basil', waterRequirementMm: 220, timeToHarvestDays: 75 },
+    { id: "coffee-beans", name: 'Coffee beans', waterRequirementMm: 2000, timeToHarvestDays: 255},
+    { id: "tea-leaves", name: 'Tea leaves', waterRequirementMm: 1750, timeToHarvestDays: 1000}
 ];
 
 const plantAliases: Record<string, string> = {

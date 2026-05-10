@@ -14,7 +14,7 @@
 {#if shown}
 	<Popup onDismiss={() => (shown = false)}>
 		<div class="flex flex-col gap-5">
-			<h2>Add a new meal</h2>
+			<h2>Add a New Meal</h2>
 
 			<div class="rounded-xl border border-gray-200 bg-gray-50 p-4">
 				<div class="mb-4">

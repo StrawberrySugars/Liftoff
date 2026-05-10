@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { foods } from '$lib/foods';
+	import { beverages } from '$lib/beverages';
 	import { getPlantByName } from '$lib/planting';
 	import { Link, MinusIcon, PlusIcon, Timer } from '@lucide/svelte';
 
@@ -10,6 +11,13 @@
 		return $foods
 			.filter((food) => food.requiredPlants.includes(plant))
 			.map((food) => food.name)
+			.sort();
+	}
+
+	function beveragesForPlant(plant: string) {
+		return $beverages
+			.filter((beverages) => beverages.requiredPlants.includes(plant))
+			.map((beverages) => beverages.name)
 			.sort();
 	}
 
