@@ -1,8 +1,9 @@
 <script lang="ts">
 	import { foods } from '$lib/foods';
 	import { getPlantByName } from '$lib/planting';
-	import { Link, Timer } from '@lucide/svelte';
+	import { Link, MinusIcon, PlusIcon, Timer } from '@lucide/svelte';
 
+	let daysElapsed = $state<number>(0);
 	let allPlants = $derived([...new Set($foods.flatMap((item) => item.requiredPlants))].sort());
 
 	function mealsForPlant(plant: string) {
@@ -22,8 +23,31 @@
     p-5"
 >
 	<div>
-		<h2 class="text-lg">Recommended meals to prepare</h2>
-		<p class="text-black/60">Based on the meals planned, you must grow:</p>
+		<div class="flex">
+			<div>
+				<h2 class="text-lg">Recommended meals to prepare</h2>
+				<p class="text-black/60">Based on the meals planned, you must grow:</p>
+			</div>
+			<div class="ml-auto flex overflow-hidden rounded-lg border border-gray-300">
+				<button
+					class="flex h-full items-center justify-center px-3 hover:bg-gray-100"
+					onclick={() => (daysElapsed = Math.max(0, daysElapsed - 1))}
+				>
+					<MinusIcon size={18} />
+				</button>
+				<input
+					type="number"
+					bind:value={daysElapsed}
+					class="w-12 border-r border-l border-gray-300 px-2 py-2 text-center focus:outline-none"
+				/>
+				<button
+					class="flex h-full items-center justify-center px-3 hover:bg-gray-100"
+					onclick={() => (daysElapsed = daysElapsed + 1)}
+				>
+					<PlusIcon size={18} />
+				</button>
+			</div>
+		</div>
 		<ul class="mt-2 space-y-3">
 			{#each allPlants as plant (plant)}
 				<li

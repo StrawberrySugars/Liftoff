@@ -9,31 +9,31 @@ export interface Food {
 
 const initialFoods: Food[] = [
     {
-        "name": "Fresh Garden Salad",
+        "name": "Garden Salad",
         "requiredPlants": ["Lettuce", "Tomato", "Carrots", "Basil", "Dill"],
         "nutrients": ["Vitamin A", "Vitamin K", "Fiber"],
         "amount": 1
     },
     {
-        "name": "Sweet Potato and Chickpea Stew",
+        "name": "Sweet Potato Stew",
         "requiredPlants": ["Sweet potato", "Chickpeas", "Dill"],
         "nutrients": ["Carbohydrates", "Protein", "Vitamin A"],
         "amount": 1
     },
     {
-        "name": "Soybean and Tomato Stir-fry",
+        "name": "Soybean Stir-fry",
         "requiredPlants": ["Soybeans", "Tomato", "Basil"],
         "nutrients": ["Protein", "Healthy Fats", "Vitamin C"],
         "amount": 1
     },
     {
-        "name": "Space Flatbread with Herb Garnish",
+        "name": "Herb Flatbread",
         "requiredPlants": ["Wheat (Ground into flour)", "Basil", "Dill"],
         "nutrients": ["Carbohydrates", "Protein"],
         "amount": 1
     },
     {
-        "name": "Chickpea Lettuce Wraps",
+        "name": "Chickpea Wraps",
         "requiredPlants": ["Lettuce", "Chickpeas", "Carrots"],
         "nutrients": ["Protein", "Fiber", "Vitamin K"],
         "amount": 1
