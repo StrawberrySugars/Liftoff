@@ -32,11 +32,16 @@ const initialBeverages: Beverage[] = [
     }
 ];
 
-function normalizeBeverages(items: Beverage[]) {
-    return items.map((beverage) => ({
+function normalizeBeverage(beverage: Beverage) {
+    return {
         ...beverage,
-        amount: beverage.amount ?? 1
-    }));
+        amount: beverage.amount ?? 1,
+        ingStr: beverage.ingStr ?? (beverage.requiredPlants.length > 0 ? 'Ingredients:' : '')
+    };
+}
+
+function normalizeBeverages(items: Beverage[]) {
+    return items.map(normalizeBeverage);
 }
 
 function normalizeBeverageName(name: string) {
@@ -56,6 +61,14 @@ function resolveBeverageImage(beverage: Pick<Beverage, 'name' | 'img'>) {
     return beverage.img?.trim() ?? '';
 }
 
+const initialBeverageIngStrByName = new Map(
+    initialBeverages.map((beverage) => [normalizeBeverageName(beverage.name), beverage.ingStr])
+);
+
+function getIngStr(beverage: Pick<Beverage, 'ingStr'>) {
+    return beverage.ingStr?.trim() ?? '';
+}
+
 function createBeverageStore() {
     const storedData = typeof window !== 'undefined' ? localStorage.getItem('beverages') : null;
     const initialData = storedData ? normalizeBeverages(JSON.parse(storedData)) : initialBeverages;
@@ -66,10 +79,10 @@ function createBeverageStore() {
         subscribe,
         addBeverage: (beverage: Omit<Beverage, 'id'>) =>
             update((items) => {
-                const newBeverage = {
+                const newBeverage = normalizeBeverage({
                     ...beverage,
                     amount: beverage.amount ?? 1
-                };
+                } as Beverage);
                 const updated = [...items, newBeverage];
                 localStorage.setItem('beverages', JSON.stringify(updated));
                 return updated;
