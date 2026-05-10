@@ -64,7 +64,7 @@
 
 <div class="p-5">
 	<h2 class="pb-2 text-lg">List of Meals</h2>
-	<button
+	<!-- <button
 		class="flex cursor-pointer gap-2 rounded bg-blue-500 px-4 py-2 text-white hover:bg-blue-600"
 		onclick={() => {
 			mealName = '';
@@ -73,7 +73,7 @@
 		}}
 	>
 		<PlusIcon /> add a meal
-	</button>
+	</button> -->
 	<div class="mt-5">
 		{#each $foods as food, index (food.name)}
 			<div class="mb-2 flex rounded-lg border border-gray-300 p-3">
@@ -87,14 +87,14 @@
 				<div class="ml-auto flex items-center gap-3">
 					<button
 						disabled={food.amount <= 0}
-						class="rounded p-1 hover:bg-gray-300 disabled:cursor-not-allowed disabled:opacity-40 disabled:hover:bg-transparent"
+						class="cursor-pointer rounded p-1 hover:bg-gray-300 disabled:cursor-not-allowed disabled:opacity-40 disabled:hover:bg-transparent"
 						onclick={() => foods.decreaseFoodAmount(index)}
 					>
 						<MinusIcon />
 					</button>
 					<div>{food.amount}</div>
 					<button
-						class="rounded p-1 hover:bg-gray-300"
+						class="cursor-pointer rounded p-1 hover:bg-gray-300"
 						onclick={() => foods.increaseFoodAmount(index)}
 					>
 						<PlusIcon />
