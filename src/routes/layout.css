@@ -144,3 +144,22 @@ ul {
 	float: right;
 	padding-right: 25px;
 }
+
+.bevTextStick {
+	display: flex; 
+	justify-content: space-between;
+	padding-left: 10px;
+	padding-top: 5px;
+}
+
+.stickRight {
+	float: right;
+}
+
+.bevIng {
+	padding-bottom: 10px;
+}
+
+.bevBox {
+	padding-bottom: 10px;
+}
