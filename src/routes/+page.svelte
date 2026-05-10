@@ -10,7 +10,16 @@
 			<div
 				class="flex h-full flex-col rounded-lg border border-gray-300 transition hover:border-gray-400"
 			>
-				<img src={food.img} alt={food.name} class="h-70 w-full rounded-t-lg object-cover" />
+				{#if food.img}
+					<img
+						src={food.img}
+						alt={food.name}
+						class="h-70 w-full rounded-t-lg object-cover"
+						onerror={(event) => {
+							(event.currentTarget as HTMLImageElement).style.display = 'none';
+						}}
+					/>
+				{/if}
 				<div class="p-4">
 					<div class="flex-1">
 						<h3 class="font-semibold text-gray-900">{food.name}</h3>
