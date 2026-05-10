@@ -31,23 +31,24 @@
 </script>
 
 <main class="flex flex-col gap-4 rounded-lg p-5" id="main-content">
-	<div>
-		<h1 class="text-2xl font-semibold">Ingredients to Grow</h1>
-		<div aria-label="Days elapsed tracker"></div>
-		<div class="flex pb-2">
-			<label for="daysElapsed" class="sr-only">Days elapsed</label>
-			<p class="text-black/70">Based on the meals planned, you must grow:</p>
-			<div class="elapsed ml-auto flex overflow-hidden rounded-lg border border-gray-300">
+	<div class="flex items-start justify-between gap-4">
+		<div>
+			<h1 class="text-2xl font-semibold">Ingredients to Grow</h1>
+			<p class="mt-2 text-black/70">Based on the meals planned, you must grow:</p>
+		</div>
+		<div class="flex flex-col items-end gap-2">
+			<label for="daysElapsed" class="text-sm font-medium text-gray-700">Days elapsed</label>
+			<div class="elapsed flex overflow-hidden rounded-lg border border-gray-300 bg-white">
 				<button
-					class="flex h-full items-center justify-center px-3 transition-opacity focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:outline-none {daysElapsed ===
+					class="flex items-center justify-center bg-gray-50 px-4 py-2 transition-colors hover:bg-gray-100 {daysElapsed ===
 					0
-						? 'cursor-not-allowed opacity-50 '
-						: 'hover:bg-gray-100'}"
+						? 'cursor-not-allowed opacity-40 hover:bg-gray-50'
+						: 'cursor-pointer'} focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:outline-none"
 					onclick={() => (daysElapsed = Math.max(0, daysElapsed - 1))}
 					disabled={daysElapsed === 0}
 					aria-label="Decrease days elapsed"
 				>
-					<MinusIcon size={18} />
+					<MinusIcon size={20} aria-hidden="true" />
 				</button>
 				<input
 					id="daysElapsed"
@@ -55,18 +56,21 @@
 					bind:value={daysElapsed}
 					min="0"
 					step="1"
-					class="w-15 border-r border-l border-gray-300 px-2 py-2 text-center focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:outline-none"
+					class="w-20 border-r border-l border-gray-300 px-3 py-2 text-center font-semibold focus:z-10 focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:outline-none"
 					aria-label="Days elapsed for plant growth"
 				/>
 				<button
-					class="flex h-full items-center justify-center px-3 transition-opacity hover:bg-gray-100 focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:outline-none"
+					class="flex cursor-pointer items-center justify-center bg-gray-50 px-4 py-2 transition-colors hover:bg-gray-100 focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:outline-none"
 					onclick={() => (daysElapsed = daysElapsed + 1)}
 					aria-label="Increase days elapsed"
 				>
-					<PlusIcon size={18} />
+					<PlusIcon size={20} aria-hidden="true" />
 				</button>
 			</div>
 		</div>
+	</div>
+	<div>
+		<div aria-label="Days elapsed tracker"></div>
 		<ul class="mt-4 space-y-3" role="list">
 			{#each allPlants as plant (plant)}
 				<li

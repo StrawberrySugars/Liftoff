@@ -53,14 +53,14 @@
 								<PlusIcon size={18} aria-hidden="true" />
 							</button>
 						</div>
-						<button
+						<!-- <button
 							class="cursor-pointer rounded p-1 text-red-600 transition hover:bg-red-100 focus:ring-2 focus:ring-red-500 focus:ring-offset-2 focus:outline-none"
 							onclick={() => foods.removeFood(index)}
 							aria-label="Remove {food.name} from meal list"
 							title="Delete meal"
 						>
 							<TrashIcon size={18} aria-hidden="true" />
-						</button>
+						</button> -->
 					</div>
 				</div>
 			</div>
