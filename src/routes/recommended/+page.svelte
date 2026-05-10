@@ -43,12 +43,15 @@
 
 <div class="flex flex-col gap-4 rounded-lg p-5">
 	<div>
+	<div>
+		<div class="elapsed">
+  			<span class="text-lg font-semibold">Recommended meals to prepare</span>
+  			<span id="timeElapsed">Time elapsed</span>
+		</div>
+	</div>
 		<div class="flex pb-2">
-			<div>
-				<h2 class="text-lg font-semibold">Recommended meals to prepare</h2>
-				<p class="text-black/70">Based on the meals planned, you must grow:</p>
-			</div>
-			<div class="ml-auto flex overflow-hidden rounded-lg border border-gray-300">
+			<p class="text-black/70">Based on the meals planned, you must grow:</p>
+			<div class="elapsed ml-auto flex overflow-hidden rounded-lg border border-gray-300">
 				<button
 					class="flex h-full items-center justify-center px-3 transition-opacity focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:outline-none {daysElapsed ===
 					0

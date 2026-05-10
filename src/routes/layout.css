@@ -134,3 +134,13 @@ ul {
 	padding-left: 15px;
 	padding-top: 10px;
 }
+
+#elapsed {
+	display: flex; 
+	justify-content: space-between;
+}
+
+#timeElapsed {
+	float: right;
+	padding-right: 25px;
+}
