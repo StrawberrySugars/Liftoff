@@ -1,98 +1,99 @@
 <script lang="ts">
-	// no SvelteSet required for this demo
-	import { BarY, Plot } from 'svelteplot';
 	import { nutrients as actualNutrients } from '$lib/nutrients';
-	import { expected_nutrients as expectedNutrients } from '$lib/expected_nutrients';
-	import conversions from '$lib/conversions.json';
-	import { getAllPlants, getItemsForPlant, getQuantityForPlant } from '$lib/plant-utils';
-	import { getPlantByName } from '$lib/planting';
+	import { getAllPlants } from '$lib/plant-utils';
 	import { foods } from '$lib/foods';
 	import { beverages } from '$lib/beverages';
-	const convs = conversions as unknown as Record<string, Record<string, number>>;
+	import { plantAliases, normalizePlantName } from '$lib/planting';
+	import { Plot, BarY, RuleY } from 'svelteplot';
 
-	let allPlants = getAllPlants($foods, $beverages);
-
-	function mealsForPlant(plant: string) {
-		return getItemsForPlant(plant, $foods, $beverages);
-	}
-
-	function growTimeForPlant(plant: string) {
-		return getPlantByName(plant)?.timeToHarvestDays;
-	}
-
-	function quantityForPlant(plant: string) {
-		return getQuantityForPlant(plant, $foods, $beverages);
-	}
-
-	const ingredients = allPlants.map((plant) => ({
-		name: plant,
-		amount: quantityForPlant(plant),
-		unit: 'g' // assuming all quantities are in grams for simplicity; adjust as needed
-	}));
-	const calories = ingredients
-		.map((it) => actualNutrients[it.name]?.calories_kcal ?? 0)
-		.reduce((a, b) => a + b, 0);
-
-	function toGrams(ing: { name: string; amount: number; unit: string }) {
-		const key = ing.name.toLowerCase();
-		const conv = convs[key] ?? {};
-		// direct unit match
-		if (ing.unit === 'g') return ing.amount;
-		if (conv[ing.unit]) return conv[ing.unit] * ing.amount;
-		// fallback to common units
-		const common = convs.units ?? {};
-		if (common[ing.unit]) return common[ing.unit] * ing.amount;
-		return 0;
-	}
-
-	// Build long-format results for the plot: push expected then actual for selected nutrients
-	const nutrientKeys = ['calories_kcal', 'protein_g', 'carbs_g', 'fat_g'];
-	const pretty: Record<string, string> = {
+	const HEALTH_CANADA_DAILY: Record<(typeof nutrientKeys)[number], number> = {
+		calories_kcal: 2000,
+		protein_g: 50,
+		carbs_g: 130,
+		fat_g: 65
+	};
+	const nutrientKeys = ['calories_kcal', 'protein_g', 'carbs_g', 'fat_g'] as const;
+	const labels: Record<(typeof nutrientKeys)[number], string> = {
 		calories_kcal: 'Calories',
-		protein_g: 'Protein (g)',
-		carbs_g: 'Carbs (g)',
-		fat_g: 'Fat (g)'
+		protein_g: 'Protein',
+		carbs_g: 'Carbs',
+		fat_g: 'Fat'
+	};
+	const units: Record<(typeof nutrientKeys)[number], string> = {
+		calories_kcal: 'kcal',
+		protein_g: 'g',
+		carbs_g: 'g',
+		fat_g: 'g'
 	};
 
-	const resultsLong: Array<{ year: string; percent: number; party: string }> = [];
+	const actualNuts = actualNutrients as unknown as Record<string, Record<string, number>>;
 
-	for (const ing of ingredients) {
-		const grams = toGrams(ing);
-		for (const key of nutrientKeys) {
-			const expectedPer100 = Number((expectedNutrients[ing.name] ?? {})[key] ?? 0);
-			const expectedScaled = (expectedPer100 * grams) / 100;
-			resultsLong.push({
-				year: ing.name,
-				percent: Number(expectedScaled.toFixed(2)),
-				party: `${pretty[key]} — expected`
+	const overallNutrients = nutrientKeys.map((key) => {
+		let actual = 0;
+		[...$foods, ...$beverages].forEach((item) => {
+			(item.requiredPlants ?? []).forEach((plantName) => {
+				const normalized = normalizePlantName(plantName);
+				const realName = plantAliases[normalized] ?? plantName;
+				const nutrients = actualNuts[realName];
+				if (nutrients) {
+					actual += (nutrients[key] ?? 0) * (item.amount ?? 1);
+				}
 			});
+		});
 
-			const actualPer100 = Number((actualNutrients[ing.name] ?? {})[key] ?? 0);
-			const actualScaled = (actualPer100 * grams) / 100;
-			resultsLong.push({
-				year: ing.name,
-				percent: Number(actualScaled.toFixed(2)),
-				party: `${pretty[key]} — actual`
-			});
-		}
-	}
+		const expected = HEALTH_CANADA_DAILY[key];
 
-	const scheme: Record<string, string> = {};
-	// generate a color per nutrient key
-	const uniqueParties = Array.from(new Set(resultsLong.map((r) => r.party)));
-	const palette = ['#3ca951', '#efb118', '#d23a33', '#55598e', '#bf1d97', '#2b9eb3'];
-	uniqueParties.forEach((p, i) => (scheme[p] = palette[i % palette.length]));
-
-	// static filtered results (user can wire interactive filters later)
-	let resultsLongFiltered = resultsLong.slice();
+		return {
+			label: labels[key],
+			unit: units[key],
+			expected,
+			actual: Number(actual.toFixed(2)),
+			status: actual >= expected ? 'On target' : 'Needs improvement'
+		};
+	});
 </script>
 
-<Plot
-	x={{ label: 'Ingredient', axis: 'bottom' }}
-	y={{ label: 'Scaled Value (per portion)' }}
-	color={{ scheme }}
-	fx={{ axis: 'bottom', axisProps: { tickFontSize: 12 } }}
-	opacity={{ range: [0.4, 1] }}
->
-	<BarY data={resultsLongFiltered} x="year" y="percent" fx="party" fill="party" />
-</Plot>
+<section class="p-6" aria-labelledby="nutrition-summary-title">
+	<h2 id="nutrition-summary-title" class="text-xl font-semibold text-gray-900">Nutrient Summary</h2>
+	<p class="mt-1 text-base text-gray-800">
+		Overall totals comparing recommended values from health authorities (Health Canada reference)
+		against predicted values from your planned ingredients (per 100 g reference values).
+	</p>
+	<p class="mt-1 text-sm text-gray-700">
+		Timeframe: this is a current plan snapshot (daily reference values), not a weekly or monthly
+		tracker.
+	</p>
+
+	<div class="mt-4 grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-4" role="list">
+		{#each overallNutrients as nutrient (nutrient.label)}
+			<article class="rounded-xl border border-gray-300 bg-white p-4" role="listitem">
+				<h3 class="text-base font-semibold text-gray-900">{nutrient.label}</h3>
+				<dl class="mt-3 space-y-2 text-base [font-variant-numeric:tabular-nums]">
+					<div class="flex items-baseline justify-between gap-3">
+						<dt class="text-gray-700">Recommended</dt>
+						<dd class="font-medium text-gray-900">{nutrient.expected} {nutrient.unit}</dd>
+					</div>
+					<div class="flex items-baseline justify-between gap-3">
+						<dt class="text-gray-700">Predicted</dt>
+						<dd class="font-medium text-gray-900">{nutrient.actual} {nutrient.unit}</dd>
+					</div>
+				</dl>
+				<Plot grid>
+					<RuleY data={[0]} />
+					<BarY
+						data={[
+							{ label: 'Recommended', value: nutrient.expected },
+							{
+								label: 'Predicted',
+								value: nutrient.actual
+							}
+						]}
+						x="label"
+						y="value"
+						fill="status"
+					/>
+				</Plot>
+			</article>
+		{/each}
+	</div>
+</section>

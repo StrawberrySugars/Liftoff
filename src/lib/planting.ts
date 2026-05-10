@@ -23,11 +23,12 @@ export const plants: PlantOption[] = [
     { id: "tea-leaves", name: 'Tea leaves', waterRequirementMm: 1750, timeToHarvestDays: 1000, list: 2 }
 ];
 
-const plantAliases: Record<string, string> = {
+export const plantAliases: Record<string, string> = {
     soybean: 'Soybean',
     soybeans: 'Soybean',
     lettuce: 'Lettuce (Green leaf)',
     carrot: 'Carrot',
+    carrots: 'Carrot',
     'sweet potato': 'Sweet potato',
     chickpea: 'Chickpea',
     chickpeas: 'Chickpea',
@@ -38,7 +39,7 @@ const plantAliases: Record<string, string> = {
     basil: 'Basil'
 };
 
-function normalizePlantName(name: string) {
+export function normalizePlantName(name: string) {
     return name.toLowerCase().replace(/\s+/g, ' ').trim();
 }
 
