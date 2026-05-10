@@ -33,7 +33,7 @@
 	}
 </script>
 
-<div class=" flex flex-col gap-4 rounded-lg p-5">
+<div class="flex flex-col gap-4 rounded-lg p-5">
 	<div>
 		<div class="flex pb-2">
 			<div>
