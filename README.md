@@ -14,3 +14,12 @@ Repository for Liftoff May 9-10, 2026
 | Wheat                | Carbohydrates, protein, iron, magnesium, phosphorus, B vitamins, folate, zinc, manganese, selenium | 213–244 (7–8 months)                                 | Grind into flour                                   |
 | Dill                 | Vitamin A, vitamin C, manganese, fibre                                                             | 90                                                   | None                                               |
 | Basil                | Vitamin K and vitamin A                                                                            | 75                                                   | None                                               |
+## Nutrient data
+
+This project includes a small local dataset of ingredient nutrient values for demo graphs (in [src/lib/nutrients.json](src/lib/nutrients.json)). Values are only for demo purposes.
+
+Sources for nutrient data include:
+
+- **USDA FoodData Central** — primary reference for nutrient composition. API and downloadable data: https://fdc.nal.usda.gov/
+- **Open Food Facts** — open database for branded and generic foods: https://world.openfoodfacts.org/
+- **Health Canada — Canadian Nutrient File** — alternate national dataset: https://food-nutrition.canada.ca/cnf-fce/index-eng.jsp

@@ -1,0 +1,25 @@
+{
+  "units": {
+    "g": 1,
+    "kg": 1000,
+    "tbsp": 15,
+    "cup": 240,
+    "oz": 28.35
+  },
+  "lettuce": {
+    "leaf": 9
+  },
+  "carrot": {
+    "medium": 61,
+    "slice": 7
+  },
+  "tomato": {
+    "medium": 123
+  },
+  "soybean": {
+    "cup": 172
+  },
+  "beverage_generic": {
+    "cup": 240
+  }
+}

@@ -22,6 +22,7 @@
 	{/snippet}
 	{@render navLink('/', 'Foods')}
 	{@render navLink('/beverages', 'Beverages')}
-	{@render navLink('/recommended', 'Recommended')}
+	{@render navLink('/recommended', 'Ingredients')}
+	{@render navLink('/nutrition', 'Nutrition')}
 </div>
 {@render children()}
