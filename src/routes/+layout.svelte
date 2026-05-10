@@ -7,17 +7,18 @@
 
 	let { children }: { children: Snippet } = $props();
 	const currentRoute = $derived(page.url.pathname);
+	type Route = '/' | '/beverages' | '/ingredients' | '/nutrition';
 </script>
 
 <svelte:head><link rel="icon" href={favicon} /></svelte:head>
 <div class="flex flex-row border-b border-gray-300 p-5">
-	{#snippet navLink(route: string, label: string)}
+	{#snippet navLink(route: Route, label: string)}
 		{@const isActive = currentRoute === route}
 		<a
 			class="mx-1 rounded-lg border p-2 transition-colors {isActive
 				? 'border-2 border-black/50 bg-black/10'
 				: 'border-black/20 hover:bg-black/20'}"
-			href={route}>{label}</a
+			href={resolve(route)}>{label}</a
 		>
 	{/snippet}
 	{@render navLink('/', 'Foods')}
