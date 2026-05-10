@@ -3,7 +3,6 @@
 	import favicon from '$lib/assets/favicon.svg';
 	import { resolve } from '$app/paths';
 	import type { Snippet } from 'svelte';
-	import { base } from '$app/paths';
 
 	let { children }: { children: Snippet } = $props();
 </script>
@@ -13,8 +12,8 @@
 	{#snippet navItem(name: string, href: string)}
 		<a class="mx-1 rounded-lg border border-black/20 p-2 hover:bg-black/20" {href}>{name}</a>
 	{/snippet}
-	{@render navItem('Foods', '{base}/')}
-	{@render navItem('Beverages', '{base}/beverages')}
-	{@render navItem('Recommended', '{base}/recommended')}
+	{@render navItem('Foods', '/')}
+	{@render navItem('Beverages', '/beverages')}
+	{@render navItem('Recommended', '/recommended')}
 </div>
 {@render children()}
