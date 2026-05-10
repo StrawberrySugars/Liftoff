@@ -3,7 +3,10 @@
 	"private": true,
 	"version": "0.0.1",
 	"type": "module",
+	"homepage": "https://strawberrysugars.github.io/Liftoff/",
 	"scripts": {
+		"predeploy": "npm run build",
+  		"deploy": "gh-pages -d dist",
 		"dev": "vite dev",
 		"build": "vite build",
 		"preview": "vite preview",
@@ -24,6 +27,7 @@
 		"eslint": "^10.2.0",
 		"eslint-config-prettier": "^10.1.8",
 		"eslint-plugin-svelte": "^3.17.0",
+		"gh-pages": "^6.3.0",
 		"globals": "^17.4.0",
 		"prettier": "^3.8.1",
 		"prettier-plugin-svelte": "^3.5.1",

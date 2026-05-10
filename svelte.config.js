@@ -21,10 +21,6 @@ const config = {
 			precompress: false,
 			strict: true
 		}),
-		prerender: {
-            default: true,
-        },
-        trailingSlash: 'always',
         paths: {
             base: dev ? '' : '/Liftoff',
         }
