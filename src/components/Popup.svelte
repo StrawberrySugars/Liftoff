@@ -27,10 +27,10 @@
 	aria-modal="true"
 	aria-label="Modal dialog"
 >
-	<div class="relative w-full max-w-2xl mx-4 rounded bg-white p-6 shadow-lg">
+	<div class="relative mx-4 w-full max-w-2xl rounded bg-white p-6 shadow-lg">
 		<button
 			onclick={onDismiss}
-			class="absolute top-4 right-4 p-2 hover:bg-gray-100 rounded focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:outline-none transition"
+			class="absolute top-4 right-4 rounded p-2 transition hover:bg-gray-100 focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:outline-none"
 			aria-label="Close dialog"
 			title="Close (Esc)"
 		>
@@ -45,14 +45,3 @@
 		overflow: hidden;
 	}
 </style>
-		<div>
-			<button
-				onclick={onDismiss}
-				class="ml-auto block cursor-pointer rounded-md p-1 hover:bg-black/10"
-			>
-				<XIcon />
-			</button>
-		</div>
-		{@render children()}
-	</div>
-</div>
