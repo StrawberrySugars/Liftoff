@@ -22,7 +22,7 @@ const config = {
 			strict: true
 		}),
 		paths: {
-			base: dev ? '' : 'https://strawberrysugars.github.io/Liftoff/'
+			base: dev ? '' : 'Liftoff/'
 		}
 	}
 };
