@@ -12,7 +12,8 @@
 
 <svelte:head><link rel="icon" href={favicon} /></svelte:head>
 <div class="flex flex-row border-b border-gray-300 p-5">
-	{#snippet navLink(route: Route, label: string)}
+	<img src={favicon} alt="favicon" class="invert w-8 mr-4" />
+	{#snippet navLink(route: string, label: string)}
 		{@const isActive = currentRoute === route}
 		<a
 			class="mx-1 rounded-lg border p-2 transition-colors {isActive

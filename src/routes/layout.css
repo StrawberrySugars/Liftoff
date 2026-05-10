@@ -163,3 +163,7 @@ ul {
 .bevBox {
 	padding-bottom: 10px;
 }
+
+.invert {
+	filter: invert(100%);
+}
