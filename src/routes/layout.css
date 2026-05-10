@@ -144,3 +144,7 @@ ul {
 	float: right;
 	padding-right: 25px;
 }
+
+.invert {
+	filter: invert(100%);
+}
