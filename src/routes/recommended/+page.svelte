@@ -2,6 +2,7 @@
 	import { foods } from '$lib/foods';
 	import { beverages } from '$lib/beverages';
 	import { getPlantByName } from '$lib/planting';
+	import { getAllPlants, getItemsForPlant, getQuantityForPlant } from '$lib/plant-utils';
 	import { Link, MinusIcon, PlusIcon, Timer } from '@lucide/svelte';
 
 	let daysElapsed = $state<number>(
@@ -14,18 +15,10 @@
 		}
 	});
 
-	let allPlants = $derived(
-		[...new Set([
-			...$foods.flatMap((item) => item.requiredPlants),
-			...$beverages.flatMap((item) => item.requiredPlants)])
-		].sort());
+	let allPlants = getAllPlants($foods, $beverages);
 
 	function mealsForPlant(plant: string) {
-		const allItems = [...$foods, ...$beverages];
-		return allItems
-			.filter((item) => item.requiredPlants.includes(plant))
-			.map((item) => item.name)
-			.sort();
+		return getItemsForPlant(plant, $foods, $beverages);
 	}
 
 	function growTimeForPlant(plant: string) {
@@ -33,12 +26,8 @@
 	}
 
 	function quantityForPlant(plant: string) {
-		const allItems = [...$foods, ...$beverages];
-		return allItems
-			.filter((item) => item.requiredPlants.includes(plant) && item.amount > 0)
-			.reduce((sum, item) => sum + item.amount, 0);
+		return getQuantityForPlant(plant, $foods, $beverages);
 	}
-
 </script>
 
 <div class="flex flex-col gap-4 rounded-lg p-5">
