@@ -21,17 +21,12 @@
 		].sort());
 
 	function mealsForPlant(plant: string) {
-		if (getPlantId(1)) {
-			return $foods
-				.filter((food) => food.requiredPlants.includes(plant))
-				.map((food) => food.name)
-				.sort();
-		} else {
-			return $beverages
-				.filter((beverage) => beverage.requiredPlants.includes(plant))
-				.map((beverage) => beverage.name)
-				.sort();
-		}
+		const allItems = [...$foods, ...$beverages];
+
+		return allItems
+			.filter((item) => item.requiredPlants.includes(plant))
+			.map((item) => item.name)
+			.sort();
 	}
 
 	function growTimeForPlant(plant: string) {
@@ -39,15 +34,11 @@
 	}
 
 	function quantityForPlant(plant: string) {
-		if (getPlantId(1)) {
-			return $foods
-				.filter((food) => food.requiredPlants.includes(plant) && food.amount > 0)
-				.reduce((sum, food) => sum + food.amount, 0);
-		} else {
-			return $beverages
-				.filter((beverage) => beverage.requiredPlants.includes(plant) && beverage.amount > 0)
-				.reduce((sum, beverage) => sum + beverage.amount, 0);
-		}
+		const allItems = [...$foods, ...$beverages];
+
+		return allItems
+			.filter((item) => item.requiredPlants.includes(plant) && item.amount > 0)
+			.reduce((sum, item) => sum + item.amount, 0);
 	}
 </script>
 
