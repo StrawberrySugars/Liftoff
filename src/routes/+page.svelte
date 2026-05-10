@@ -3,8 +3,8 @@
 	import { MinusIcon, PlusIcon, TrashIcon } from '@lucide/svelte';
 </script>
 
-<div class="p-5">
-	<h2 class="pb-2 text-lg font-semibold">List of Meals</h2>
+<main class="p-5" id="main-content">
+	<h1 class="pb-2 text-2xl font-semibold">List of Meals</h1>
 	<div class="mt-5 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
 		{#each $foods as food, index (food.name)}
 			<div
@@ -71,6 +71,4 @@
 			</p>
 		{/if}
 	</div>
-</div>
-
-<br />
+</main>

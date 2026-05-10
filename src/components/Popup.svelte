@@ -12,7 +12,7 @@
 </script>
 
 <div
-	class="fixed top-0 left-0 flex h-full w-full items-center justify-center bg-black/50"
+	class="fixed top-0 left-0 z-40 flex h-full w-full items-center justify-center bg-black/50"
 	onclick={(event) => {
 		if (event.target === event.currentTarget) {
 			onDismiss();
@@ -23,11 +23,14 @@
 			onDismiss();
 		}
 	}}
-	role="dialog"
-	aria-modal="true"
-	aria-label="Modal dialog"
+	role="presentation"
 >
-	<div class="relative mx-4 w-full max-w-2xl rounded bg-white p-6 shadow-lg">
+	<div
+		class="relative z-50 mx-4 w-full max-w-2xl rounded bg-white p-6 shadow-lg"
+		role="dialog"
+		aria-modal="true"
+		aria-label="Modal dialog"
+	>
 		<button
 			onclick={onDismiss}
 			class="absolute top-4 right-4 rounded p-2 transition hover:bg-gray-100 focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:outline-none"

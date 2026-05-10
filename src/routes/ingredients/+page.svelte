@@ -30,15 +30,12 @@
 	}
 </script>
 
-<div class="flex flex-col gap-4 rounded-lg p-5">
+<main class="flex flex-col gap-4 rounded-lg p-5" id="main-content">
 	<div>
-	<div>
-		<div class="elapsed">
-  			<span class="text-lg font-semibold">Recommended meals to prepare</span>
-  			<span id="timeElapsed">Time elapsed</span>
-		</div>
-	</div>
+		<h1 class="text-2xl font-semibold">Recommended Meals to Prepare</h1>
+		<div aria-label="Days elapsed tracker"></div>
 		<div class="flex pb-2">
+			<label for="daysElapsed" class="sr-only">Days elapsed</label>
 			<p class="text-black/70">Based on the meals planned, you must grow:</p>
 			<div class="elapsed ml-auto flex overflow-hidden rounded-lg border border-gray-300">
 				<button
@@ -53,6 +50,7 @@
 					<MinusIcon size={18} />
 				</button>
 				<input
+					id="daysElapsed"
 					type="number"
 					bind:value={daysElapsed}
 					min="0"
@@ -121,4 +119,4 @@
 			{/each}
 		</ul>
 	</div>
-</div>
+</main>

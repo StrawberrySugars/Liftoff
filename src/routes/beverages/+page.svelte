@@ -5,8 +5,8 @@
 	import { plants } from '$lib/planting';
 </script>
 
-<div class="p-5">
-    <h2 class="pb-2 text-lg font-semibold">List of Beverages</h2>
+<main class="p-5" id="main-content">
+	<h1 class="pb-2 text-2xl font-semibold">List of Beverages</h1>
 	<div class="mt-5 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
 		{#each $beverages as beverage, index (beverage.name)}
 			<div
@@ -26,9 +26,10 @@
 					<div class="flex-1">
 						<h3 class="font-semibold text-gray-900">{beverage.name}</h3>
 						<p class="text-sm text-gray-600">
-                            {beverage.ingStr} {beverage.requiredPlants.join(', ')}
-                            <br>
-                        </p>
+							{beverage.ingStr}
+							{beverage.requiredPlants.join(', ')}
+							<br />
+						</p>
 					</div>
 					<div class="mt-4 flex items-center justify-between gap-2 border-t border-gray-200 pt-3">
 						<div class="flex items-center gap-2">
@@ -76,6 +77,4 @@
 			</p>
 		{/if}
 	</div>
-</div>
-
-<br />
+</main>
