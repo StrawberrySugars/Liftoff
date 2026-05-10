@@ -48,10 +48,6 @@ export function getPlantByName(name: string): PlantOption | undefined {
     return plants.find((plant) => plant.name === plantName);
 }
 
-export function getPlantId(index: number): PlantOption | undefined {
-    return plants.find((plant) => plant.list === index);
-}
-
 export function suggestPlants(availableWater: number): PlantOption[] {
     return plants
         .filter((plant) => plant.waterRequirementMm <= availableWater)
