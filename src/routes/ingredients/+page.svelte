@@ -32,7 +32,7 @@
 
 <main class="flex flex-col gap-4 rounded-lg p-5" id="main-content">
 	<div>
-		<h1 class="text-2xl font-semibold">Recommended Meals to Prepare</h1>
+		<h1 class="text-2xl font-semibold">Ingredients to Grow</h1>
 		<div aria-label="Days elapsed tracker"></div>
 		<div class="flex pb-2">
 			<label for="daysElapsed" class="sr-only">Days elapsed</label>
