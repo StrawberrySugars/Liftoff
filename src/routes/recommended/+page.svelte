@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { foods } from '$lib/foods';
 	import { beverages } from '$lib/beverages';
-	import { getPlantByName, getPlantId } from '$lib/planting';
+	import { getPlantByName } from '$lib/planting';
 	import { Link, MinusIcon, PlusIcon, Timer } from '@lucide/svelte';
 
 	let daysElapsed = $state<number>(
@@ -22,7 +22,6 @@
 
 	function mealsForPlant(plant: string) {
 		const allItems = [...$foods, ...$beverages];
-
 		return allItems
 			.filter((item) => item.requiredPlants.includes(plant))
 			.map((item) => item.name)
@@ -35,7 +34,6 @@
 
 	function quantityForPlant(plant: string) {
 		const allItems = [...$foods, ...$beverages];
-
 		return allItems
 			.filter((item) => item.requiredPlants.includes(plant) && item.amount > 0)
 			.reduce((sum, item) => sum + item.amount, 0);
