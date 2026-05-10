@@ -3,8 +3,8 @@
 	import { MinusIcon, PlusIcon, TrashIcon } from '@lucide/svelte';
 </script>
 
-<div class="p-5">
-	<h2 class="pb-2 text-lg font-semibold">List of Meals</h2>
+<main class="p-5" id="main-content">
+	<h1 class="pb-2 text-2xl font-semibold">List of Meals</h1>
 	<div class="mt-5 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
 		{#each $foods as food, index (food.name)}
 			<div
@@ -53,14 +53,14 @@
 								<PlusIcon size={18} aria-hidden="true" />
 							</button>
 						</div>
-						<button
+						<!-- <button
 							class="cursor-pointer rounded p-1 text-red-600 transition hover:bg-red-100 focus:ring-2 focus:ring-red-500 focus:ring-offset-2 focus:outline-none"
 							onclick={() => foods.removeFood(index)}
 							aria-label="Remove {food.name} from meal list"
 							title="Delete meal"
 						>
 							<TrashIcon size={18} aria-hidden="true" />
-						</button>
+						</button> -->
 					</div>
 				</div>
 			</div>
@@ -71,6 +71,4 @@
 			</p>
 		{/if}
 	</div>
-</div>
-
-<br />
+</main>
