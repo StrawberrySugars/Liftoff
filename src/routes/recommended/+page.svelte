@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { foods } from '$lib/foods';
 	import { beverages } from '$lib/beverages';
-	import { getPlantByName } from '$lib/planting';
+	import { getPlantByName, getPlantId } from '$lib/planting';
 	import { Link, MinusIcon, PlusIcon, Timer } from '@lucide/svelte';
 
 	let daysElapsed = $state<number>(
@@ -14,20 +14,24 @@
 		}
 	});
 
-	let allPlants = $derived([...new Set($foods.flatMap((item) => item.requiredPlants))].sort());
+	let allPlants = $derived(
+		[...new Set([
+			...$foods.flatMap((item) => item.requiredPlants),
+			...$beverages.flatMap((item) => item.requiredPlants)])
+		].sort());
 
 	function mealsForPlant(plant: string) {
-		return $foods
-			.filter((food) => food.requiredPlants.includes(plant))
-			.map((food) => food.name)
-			.sort();
-	}
-
-	function beveragesForPlant(plant: string) {
-		return $beverages
-			.filter((beverages) => beverages.requiredPlants.includes(plant))
-			.map((beverages) => beverages.name)
-			.sort();
+		if (getPlantId(1)) {
+			return $foods
+				.filter((food) => food.requiredPlants.includes(plant))
+				.map((food) => food.name)
+				.sort();
+		} else {
+			return $beverages
+				.filter((beverage) => beverage.requiredPlants.includes(plant))
+				.map((beverage) => beverage.name)
+				.sort();
+		}
 	}
 
 	function growTimeForPlant(plant: string) {
@@ -35,9 +39,15 @@
 	}
 
 	function quantityForPlant(plant: string) {
-		return $foods
-			.filter((food) => food.requiredPlants.includes(plant) && food.amount > 0)
-			.reduce((sum, food) => sum + food.amount, 0);
+		if (getPlantId(1)) {
+			return $foods
+				.filter((food) => food.requiredPlants.includes(plant) && food.amount > 0)
+				.reduce((sum, food) => sum + food.amount, 0);
+		} else {
+			return $beverages
+				.filter((beverage) => beverage.requiredPlants.includes(plant) && beverage.amount > 0)
+				.reduce((sum, beverage) => sum + beverage.amount, 0);
+		}
 	}
 </script>
 
