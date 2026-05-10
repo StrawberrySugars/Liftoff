@@ -82,10 +82,7 @@
 						{food.name}
 					</div>
 					<div class="text-black/60">{food.requiredPlants.join(', ')}</div>
-					<div class="mt-1 text-xs text-black/50">
-						{food.nutritionalInfo.calories} cal · {food.nutritionalInfo.protein}g protein ·
-						{food.nutritionalInfo.fat}g fat · {food.nutritionalInfo.carbs}g carbs
-					</div>
+					<div class="mt-1 text-xs text-black/50"></div>
 				</div>
 				<div class="ml-auto flex items-center gap-3">
 					<button
