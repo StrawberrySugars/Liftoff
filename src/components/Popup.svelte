@@ -19,23 +19,29 @@
 		}
 	}}
 	onkeydown={(event) => {
-		if (event.key === 'Enter' || event.key === ' ') {
+		if (event.key === 'Escape') {
 			onDismiss();
 		}
 	}}
-	role="button"
-	tabindex="0"
-	aria-label="Close popup"
+	role="dialog"
+	aria-modal="true"
+	aria-label="Modal dialog"
 >
-	<div class="rounded bg-white p-6">
-		<div>
-			<button
-				onclick={onDismiss}
-				class="ml-auto block cursor-pointer rounded-md p-1 hover:bg-black/10"
-			>
-				<XIcon />
-			</button>
-		</div>
+	<div class="relative mx-4 w-full max-w-2xl rounded bg-white p-6 shadow-lg">
+		<button
+			onclick={onDismiss}
+			class="absolute top-4 right-4 rounded p-2 transition hover:bg-gray-100 focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:outline-none"
+			aria-label="Close dialog"
+			title="Close (Esc)"
+		>
+			<XIcon size={24} aria-hidden="true" />
+		</button>
 		{@render children()}
 	</div>
 </div>
+
+<style>
+	:global(body.dialog-open) {
+		overflow: hidden;
+	}
+</style>
