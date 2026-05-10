@@ -13,14 +13,14 @@ const initialBeverages: Beverage[] = [
         "name": "Water",
         "requiredPlants": [],
         "amount": 1,
-        "img": "https://www.eatright.org/health/essential-nutrients/water/what-makes-a-healthful-drink-of-water",
+        "img": "https://images.pexels.com/photos/416528/pexels-photo-416528.jpeg",
         "ingStr": ""
     },
     {
         "name": "Coffee",
         "requiredPlants": ["Coffee beans"],
         "amount": 1,
-        "img": "https://www.eatright.org/health/wellness/healthful-habits/benefits-of-coffee",
+        "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/45/A_small_cup_of_coffee.JPG/1280px-A_small_cup_of_coffee.JPG?utm_source=meta.wikimedia.org&utm_campaign=index&utm_content=thumbnail",
         "ingStr": "Ingredients:"
     },
     {
@@ -37,6 +37,23 @@ function normalizeBeverages(items: Beverage[]) {
         ...beverage,
         amount: beverage.amount ?? 1
     }));
+}
+
+function normalizeBeverageName(name: string) {
+    return name.trim().toLowerCase();
+}
+
+const initialBeverageImageByName = new Map(
+    initialBeverages.map((beverage) => [normalizeBeverageName(beverage.name), beverage.img])
+);
+
+function resolveBeverageImage(beverage: Pick<Beverage, 'name' | 'img'>) {
+    const canonicalImage = initialBeverageImageByName.get(normalizeBeverageName(beverage.name));
+    if (canonicalImage) {
+        return canonicalImage;
+    }
+
+    return beverage.img?.trim() ?? '';
 }
 
 function createBeverageStore() {
