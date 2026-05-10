@@ -21,9 +21,9 @@ const config = {
 			precompress: false,
 			strict: true
 		}),
-        paths: {
-            base: dev ? '' : '/Liftoff',
-        }
+		paths: {
+			base: dev ? '' : 'https://strawberrysugars.github.io/Liftoff/'
+		}
 	}
 };
 
