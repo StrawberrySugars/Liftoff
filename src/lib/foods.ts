@@ -5,6 +5,7 @@ export interface Food {
     nutrients: string[];
     requiredPlants: string[];
     amount: number;
+    img: string;
 }
 
 const initialFoods: Food[] = [
@@ -12,31 +13,36 @@ const initialFoods: Food[] = [
         "name": "Garden Salad",
         "requiredPlants": ["Lettuce", "Tomato", "Carrots", "Basil", "Dill"],
         "nutrients": ["Vitamin A", "Vitamin K", "Fiber"],
-        "amount": 1
+        "amount": 1,
+        "img": "https://www.nylabone.com/-/media/project/oneweb/nylabone/images/dog101/10-intelligent-dog-breeds/golden-retriever-tongue-out.jpg?h=430&w=710&hash=7FEB820D235A44B76B271060E03572C7"
     },
     {
         "name": "Sweet Potato Stew",
         "requiredPlants": ["Sweet potato", "Chickpeas", "Dill"],
         "nutrients": ["Carbohydrates", "Protein", "Vitamin A"],
-        "amount": 1
+        "amount": 1,
+        "img": "https://www.nylabone.com/-/media/project/oneweb/nylabone/images/dog101/10-intelligent-dog-breeds/golden-retriever-tongue-out.jpg?h=430&w=710&hash=7FEB820D235A44B76B271060E03572C7"
     },
     {
         "name": "Soybean Stir-fry",
         "requiredPlants": ["Soybeans", "Tomato", "Basil"],
         "nutrients": ["Protein", "Healthy Fats", "Vitamin C"],
-        "amount": 1
+        "amount": 1,
+        "img": "https://www.nylabone.com/-/media/project/oneweb/nylabone/images/dog101/10-intelligent-dog-breeds/golden-retriever-tongue-out.jpg?h=430&w=710&hash=7FEB820D235A44B76B271060E03572C7"
     },
     {
         "name": "Herb Flatbread",
         "requiredPlants": ["Wheat (Ground into flour)", "Basil", "Dill"],
         "nutrients": ["Carbohydrates", "Protein"],
-        "amount": 1
+        "amount": 1,
+        "img": "https://www.nylabone.com/-/media/project/oneweb/nylabone/images/dog101/10-intelligent-dog-breeds/golden-retriever-tongue-out.jpg?h=430&w=710&hash=7FEB820D235A44B76B271060E03572C7"
     },
     {
         "name": "Chickpea Wraps",
         "requiredPlants": ["Lettuce", "Chickpeas", "Carrots"],
         "nutrients": ["Protein", "Fiber", "Vitamin K"],
-        "amount": 1
+        "amount": 1,
+        "img": "https://www.nylabone.com/-/media/project/oneweb/nylabone/images/dog101/10-intelligent-dog-breeds/golden-retriever-tongue-out.jpg?h=430&w=710&hash=7FEB820D235A44B76B271060E03572C7"
     }
 ];
 

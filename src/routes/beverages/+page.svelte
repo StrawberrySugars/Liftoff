@@ -14,7 +14,10 @@
 					<div>
 						{beverage.name}
 					</div>
-					<div class="text-black/60">{beverage.requiredPlants.join(', ')}</div>
+                    <div>
+                        <img src={beverage.img} alt={beverage.name}>
+                    </div>
+					<div class="text-black/60">{beverage.ingStr} {beverage.requiredPlants.join(', ')}</div>
 					<div class="mt-1 text-xs text-black/50"></div>
 				</div>
 				<div class="ml-auto flex items-center gap-3">

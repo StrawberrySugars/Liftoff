@@ -38,6 +38,7 @@
 			.filter((item) => item.requiredPlants.includes(plant) && item.amount > 0)
 			.reduce((sum, item) => sum + item.amount, 0);
 	}
+
 </script>
 
 <div class="flex flex-col gap-4 rounded-lg p-5">

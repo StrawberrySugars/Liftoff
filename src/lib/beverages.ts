@@ -4,23 +4,31 @@ export interface Beverage {
     name: string;
     requiredPlants: string[];
     amount: number;
+    img: string;
+    ingStr: string;
 }
 
 const initialBeverages: Beverage[] = [
     {
         "name": "Water",
         "requiredPlants": [],
-        "amount": 1
+        "amount": 1,
+        "img": "https://www.eatright.org/health/essential-nutrients/water/what-makes-a-healthful-drink-of-water",
+        "ingStr": ""
     },
     {
         "name": "Coffee",
         "requiredPlants": ["Coffee beans"],
-        "amount": 1
+        "amount": 1,
+        "img": "https://www.eatright.org/health/wellness/healthful-habits/benefits-of-coffee",
+        "ingStr": "Ingredients:"
     },
     {
         "name": "Tea",
         "requiredPlants": ["Tea leaves"],
-        "amount": 1
+        "amount": 1,
+        "img": "https://ca.brodandtaylor.com/cdn/shop/articles/dehydrated-tea-thumb_1024x.jpg?v=1648657037",
+        "ingStr": "Ingredients:"
     }
 ];
 
