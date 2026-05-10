@@ -1,16 +1,9 @@
 import type { Ingredient } from '$lib';
 import { writable } from 'svelte/store';
+import { plants } from './planting';
 
 const initialIngredients: Ingredient[] = [
-    { id: 1, name: 'Soybean' },
-    { id: 2, name: 'Lettuce (Green leaf)' },
-    { id: 3, name: 'Carrot' },
-    { id: 4, name: 'Sweet potato' },
-    { id: 5, name: 'Chickpea', },
-    { id: 6, name: 'Tomato', },
-    { id: 7, name: 'Wheat', },
-    { id: 8, name: 'Dill', },
-    { id: 9, name: 'Basil', }
+    plants
 ];
 
 function createIngredientStore() {

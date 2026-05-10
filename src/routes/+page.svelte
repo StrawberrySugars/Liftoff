@@ -1,33 +1,14 @@
 <script lang="ts">
 	import { foods } from '$lib/foods';
-	import { ingredients } from '$lib/ingredientStore';
 	import { MinusIcon, PlusIcon } from '@lucide/svelte';
 	import Popup from '../components/Popup.svelte';
+	import { plants } from '$lib/planting';
 
 	let shown = $state(false);
 	let mealName = $state('');
 	let selectedIngredients = $state<number[]>([]);
 
-	function addMeal() {
-		const selectedIngredientNames = $ingredients
-			.filter((ingredient) => selectedIngredients.includes(ingredient.id))
-			.map((ingredient) => ingredient.name);
-
-		if (!mealName.trim() || selectedIngredientNames.length === 0) {
-			return;
-		}
-
-		foods.addFood({
-			name: mealName.trim(),
-			nutrients: selectedIngredientNames,
-			requiredPlants: selectedIngredientNames,
-			amount: 1
-		});
-
-		mealName = '';
-		selectedIngredients = [];
-		shown = false;
-	}
+	function addMeal() {}
 </script>
 
 {#if shown}
@@ -44,7 +25,7 @@
 				</div>
 
 				<div class="grid max-h-72 grid-cols-1 gap-3 overflow-y-auto pr-1 sm:grid-cols-2">
-					{#each $ingredients as ingredient (ingredient.id)}
+					{#each plants as ingredient (ingredient.id)}
 						<label
 							class="flex cursor-pointer items-center gap-3 rounded-lg border border-gray-200 bg-white p-3 shadow-sm transition hover:border-blue-400 hover:bg-blue-50"
 						>
@@ -100,7 +81,7 @@
 					<div>
 						{food.name}
 					</div>
-					<div>{food.requiredPlants.join(', ')}</div>
+					<div class="text-black/60">{food.requiredPlants.join(', ')}</div>
 				</div>
 				<div class="ml-auto flex items-center gap-3">
 					<button
